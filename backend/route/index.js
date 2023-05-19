@@ -4,6 +4,7 @@ const router = express.Router()
 const authHandler = require('../middleware/auth')
 const authController = require('../controller/authController')
 const blogController = require('../controller/blogController')
+const commentController = require('../controller/commentController')
 
 router.get('/', (req, res) => res.json('Working!'))
 
@@ -17,11 +18,11 @@ router.post('/refresh', authController.refresh)
 router.post('/blog', authHandler, blogController.create)
 router.get('/blog/all', authHandler, blogController.getAll)
 router.get('/blog/:id', authHandler, blogController.getById)
-router.put('/blog/:id', authHandler, blogController.update)
+router.put('/blog', authHandler, blogController.update)
 router.delete('/blog/:id', authHandler, blogController.delete)
 
 // comment - create, read by blog id
-// router.post('/comment', authHandler, commentController.create)
-// router.get('/comment/:id', authHandler, commentController.getByBlogId)
+router.post('/comment', authHandler, commentController.create)
+router.get('/comment/:id', authHandler, commentController.getCommentByBlogId)
 
 module.exports = router
