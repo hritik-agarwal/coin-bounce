@@ -1,0 +1,65 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  margin: 20px auto;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+a {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.active {
+  color: #3861fb;
+}
+
+.button {
+  border: none;
+  outline: none;
+  margin: 0 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login:hover {
+  color: #fff;
+  background-color: #020202;
+}
+
+.signup {
+  color: #fff;
+  background-color: #3861fb;
+}
+
+.signup:hover {
+  background-color: #1f4ffd;
+}
+
+.signout {
+  color: #fff;
+  background-color: #ea3943;
+}
+
+.signout:hover {
+  background-color: #e01822;
+}
+
+.divider {
+  height: 1px;
+  margin-top: 5px;
+  background: linear-gradient(to right, transparent, grey, transparent);
+}
