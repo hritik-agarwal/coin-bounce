@@ -76,7 +76,7 @@ function BlogDetail() {
           </p>
         </div>
         <div className={styles.photo}>
-          <img src={blog.imagePath} width={250} height={250} alt='' />
+          <img src={blog.imagePath} alt='' />
         </div>
         <p className={styles.content}>{blog.content}</p>
         {ownsBlog && (

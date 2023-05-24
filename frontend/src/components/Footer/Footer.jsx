@@ -1,4 +1,6 @@
+import styles from './Footer.module.css'
+
 function Footer() {
-  return <div>&copy; CoinBounce 2023</div>
+  return <div className={styles.footer}>&copy; CoinForum 2023</div>
 }
 export default Footer

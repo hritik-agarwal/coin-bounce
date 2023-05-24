@@ -7,6 +7,10 @@
   margin: 20px auto;
 }
 
+.navbarMobile {
+  display: none;
+}
+
 .logo {
   font-size: 32px;
   font-weight: 800;
@@ -62,4 +66,58 @@ a {
   height: 1px;
   margin-top: 5px;
   background: linear-gradient(to right, transparent, grey, transparent);
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar {
+    display: none;
+  }
+  .navbarMobile {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+    margin: 20px auto;
+  }
+  .menu {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(35, 87, 232);
+    cursor: pointer;
+  }
+  .navbarMenuList {
+    padding: 0 10px;
+    width: 50%;
+    position: fixed;
+    bottom: 100px;
+    right: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(17, 142, 184);
+    border-radius: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  a {
+    color: black;
+    margin: 10px 0;
+  }
+  .logo {
+    color: white;
+  }
+  .button {
+    margin: 10px 0;
+  }
 }
