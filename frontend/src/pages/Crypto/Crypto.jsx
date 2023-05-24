@@ -6,6 +6,10 @@ import Loader from '../../components/Loader/Loader'
 function Crypto() {
   const [data, setData] = useState([])
 
+  const rounded = (val) => {
+    return Math.round(val * 1000) / 1000
+  }
+
   useEffect(() => {
     const cryptoApiCall = async () => {
       const response = await getCrypto()
@@ -35,7 +39,9 @@ function Crypto() {
           <th>Coin</th>
           <th>Symbol</th>
           <th>Price</th>
+          <th>1h</th>
           <th>24h</th>
+          <th>7d</th>
         </tr>
       </thead>
       <tbody>
@@ -53,11 +59,27 @@ function Crypto() {
               <td>{coin.current_price}</td>
               <td
                 style={
-                  coin.price_change_percentage_24h < 0
+                  coin.price_change_percentage_1h_in_currency < 0
                     ? negativeStyle
                     : positiveStyle
                 }>
-                {coin.price_change_percentage_24h}
+                {rounded(coin.price_change_percentage_1h_in_currency)}%
+              </td>
+              <td
+                style={
+                  coin.price_change_percentage_24h_in_currency < 0
+                    ? negativeStyle
+                    : positiveStyle
+                }>
+                {rounded(coin.price_change_percentage_24h_in_currency)}%
+              </td>
+              <td
+                style={
+                  coin.price_change_percentage_7d_in_currency < 0
+                    ? negativeStyle
+                    : positiveStyle
+                }>
+                {rounded(coin.price_change_percentage_7d_in_currency)}%
               </td>
             </tr>
           )

@@ -13,8 +13,8 @@ function Home() {
   useEffect(() => {
     const newsApiCall = async () => {
       const response = await getNews()
-      console.log(response)
-      setArticles(response)
+
+      setArticles(response.filter(article => article.urlToImage !== null))
     }
     newsApiCall()
     return () => setArticles([])
@@ -26,9 +26,9 @@ function Home() {
 
   return (
     <>
-      <div className={styles.header}>Home</div>
       <div className={styles.grid}>
         {articles.map(article => {
+          console.log(article.urlToImage)
           return (
             <div
               key={article.url}

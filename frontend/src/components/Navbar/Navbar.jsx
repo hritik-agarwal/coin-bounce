@@ -17,7 +17,7 @@ function Navbar() {
     <>
       <nav className={styles.navbar}>
         <NavLink to='/' className={styles.logo}>
-          CoinBounce
+          CoinForum
         </NavLink>
         <NavLink className={({isActive}) => isActive && styles.active} to='/'>
           Home

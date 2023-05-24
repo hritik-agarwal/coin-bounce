@@ -9,7 +9,6 @@ function Blog() {
   useEffect(() => {
     const getAllBlogsCall = async () => {
       const response = await getAllBlogs()
-      console.log({response})
       if (response.status === 200) {
         setBlogs(response.data.blogs)
       }
@@ -28,7 +27,7 @@ function Blog() {
         <div key={blog._id} className={styles.blog}>
           <h1>{blog.title}</h1>
           <img src={blog.imagePath} alt='' />
-          <p>{blog.content}</p>
+          <p>{blog.content.slice(0, 200)}...</p>
         </div>
       ))}
     </div>
