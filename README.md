@@ -1,7 +1,7 @@
 # coin-forum
 
 It is essentially a cryto blog page with following features :-
-* It showcases recent news related to crypto, blockchaing by fetching data from NewsAPI.
+* It showcases recent news related to crypto, blockchain by fetching data from NewsAPI.
 * It also uses another api from coingecko to fetch recent market prices of cryptocurrencies sorted in order of their market cap.
 * It has authentication feature which allows users to log in and write their own blogs and also comment on blogs written by others.
 * For the tech stack it uses React for frontent, Node for Backend and MongoDB for database.
