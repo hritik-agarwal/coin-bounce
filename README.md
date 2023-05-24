@@ -8,7 +8,7 @@ It is essentially a cryto blog page with following features :-
 
 ## Screenshots
 
-<img src="https://drive.google.com/uc?export=view&id=16zKb5iqYU6ux_z1YNJI0hvWn05d5DPfZ" />
-<img src="https://drive.google.com/uc?export=view&id=1j6ATBE_LWf7GKjCk8gG7-eq6KpY0l-38" />
-<img src="https://drive.google.com/uc?export=view&id=1xI9u_TADB9QqgyJIdyXnjhyKDo7va9m9" />
-<img src="https://drive.google.com/uc?export=view&id=1MnPPRL5Sb6PiiUgsW0Q-_b5H9JFdhsf6" />
+<img src="https://drive.google.com/uc?export=view&id=1Ae1ChMMFDRp-ZgW1Z4y0hHekCpSxeUo7" />
+<img src="https://drive.google.com/uc?export=view&id=1SQZbXyN8JHw1-6-BS0Tp6e8zyh5E39ph" />
+<img src="https://drive.google.com/uc?export=view&id=1c7YEtQEoD95caEafsj2HX1buHbF6PQv7" />
+<img src="https://drive.google.com/uc?export=view&id=1lXntYdRyOpaPR_qtbK733flEWsLvcQU_" />
