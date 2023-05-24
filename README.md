@@ -13,6 +13,8 @@ It is essentially a cryto blog page with following features :-
 <img src="https://drive.google.com/uc?export=view&id=1c7YEtQEoD95caEafsj2HX1buHbF6PQv7" />
 <img src="https://drive.google.com/uc?export=view&id=1lXntYdRyOpaPR_qtbK733flEWsLvcQU_" />
 
+#### Note: If screenshots are not loading, try reloading the site.
+
 ## To test the project in Local 
 
 1. Create .env files in both frontend and backend
