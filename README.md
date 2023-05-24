@@ -12,3 +12,34 @@ It is essentially a cryto blog page with following features :-
 <img src="https://drive.google.com/uc?export=view&id=1SQZbXyN8JHw1-6-BS0Tp6e8zyh5E39ph" />
 <img src="https://drive.google.com/uc?export=view&id=1c7YEtQEoD95caEafsj2HX1buHbF6PQv7" />
 <img src="https://drive.google.com/uc?export=view&id=1lXntYdRyOpaPR_qtbK733flEWsLvcQU_" />
+
+## To test the project in Local 
+
+1. Create .env files in both frontend and backend
+```env
+// backend .env file
+
+// Create mongodb account, then create a project and add the respective credentials below (refer youtube/mongo documents)
+// to generate access and refresh token, run node in terminal and then use require('crypto').randomBytes(64).toString('hex')
+PORT=4000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.ygalda6.mongodb.net/<database>?retryWrites=true&w=majority
+ACCESS_TOKEN_SECRET=<access_token>
+REFRESH_TOKEN_SECRET=<refresh_token>
+BACKEND_SERVER_PATH=http://localhost:4000
+
+
+// frontend .env file
+// go to newsapi and get your api key
+REACT_APP_INTERNAL_API_PATH=http://localhost:4000
+REACT_APP_NEWS_API_KEY=<news_api_key>
+```
+2. Run backend and frontend in seperate terminal
+```
+// to run backend
+npm install
+npm run dev
+
+// to run frontend
+npm install
+npm run start
+```
