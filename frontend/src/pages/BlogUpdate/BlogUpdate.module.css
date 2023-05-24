@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.submit {
+.update {
   background-color: #3861fb;
   color: #fff;
   border: none;
@@ -49,7 +49,7 @@
   margin-top: 50px;
 }
 
-.submit:hover,
-.submit:disabled {
+.update:hover,
+.update:disabled {
   background-color: #829dff;
 }

@@ -48,7 +48,7 @@ export const getAllBlogs = async () => {
   return response
 }
 
-export const submitBlogs = async (data) => {
+export const submitBlogs = async data => {
   let response
   try {
     response = await api.post('/blog', data)
@@ -57,3 +57,85 @@ export const submitBlogs = async (data) => {
   }
   return response
 }
+
+export const updateBlogs = async data => {
+  let response
+  try {
+    response = await api.put('/blog', data)
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+export const getBlogById = async id => {
+  let response
+  try {
+    response = await api.get(`/blog/${id}`)
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+export const getCommentByBlogId = async id => {
+  let response
+  try {
+    response = await api.get(`/comment/${id}`, {
+      validateStatus: false,
+    })
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+export const createComment = async data => {
+  let response
+  try {
+    response = await api.post(`/comment`, data)
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+export const deleteBlog = async id => {
+  let response
+  try {
+    response = await api.delete(`/blog/${id}`)
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+// auto token refresh
+
+// /protected-resource -> 401
+// /refresh -> authenthicated state
+// /protected-resource
+
+api.interceptors.response.use(
+  config => config,
+  async error => {
+    const originalReq = error.config
+    if (
+      (error.response.status === 401 || error.response.status === 500) &&
+      originalReq &&
+      !originalReq._isRetry
+    ) {
+      originalReq.isRetry = true
+      try {
+        await axios.post(
+          `${process.env.REACT_APP_INTERNAL_API_PATH}/refresh`,
+          {},
+          {withCredentials: true}
+        )
+        return api.request(originalReq)
+      } catch (error) {
+        return error
+      }
+    }
+  }
+)

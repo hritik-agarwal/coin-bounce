@@ -28,7 +28,6 @@ function Home() {
     <>
       <div className={styles.grid}>
         {articles.map(article => {
-          console.log(article.urlToImage)
           return (
             <div
               key={article.url}

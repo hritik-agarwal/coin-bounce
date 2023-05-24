@@ -19,28 +19,30 @@ function Navbar() {
         <NavLink to='/' className={styles.logo}>
           CoinForum
         </NavLink>
-        <NavLink className={({isActive}) => isActive && styles.active} to='/'>
+        <NavLink
+          to='/'
+          className={({isActive}) => (isActive ? styles.active : undefined)}>
           Home
         </NavLink>
         <NavLink
           to='crypto'
-          className={({isActive}) => isActive && styles.active}>
+          className={({isActive}) => (isActive ? styles.active : undefined)}>
           Cryptocurrencies
         </NavLink>
         <NavLink
           to='blogs'
-          className={({isActive}) => isActive && styles.active}>
+          className={({isActive}) => (isActive ? styles.active : undefined)}>
           Blogs
         </NavLink>
         <NavLink
           to='submit'
-          className={({isActive}) => isActive && styles.active}>
+          className={({isActive}) => (isActive ? styles.active : undefined)}>
           Submit a Blog
         </NavLink>
         {isAuthenticated ? (
           <NavLink
             to='signout'
-            className={({isActive}) => isActive && styles.active}>
+            className={({isActive}) => (isActive ? styles.active : undefined)}>
             <button
               onClick={handleSignOut}
               className={`${styles.button} ${styles.signout}`}>
@@ -51,14 +53,18 @@ function Navbar() {
           <div>
             <NavLink
               to='login'
-              className={({isActive}) => isActive && styles.active}>
+              className={({isActive}) =>
+                isActive ? styles.active : undefined
+              }>
               <button className={`${styles.button} ${styles.login}`}>
                 Log In
               </button>
             </NavLink>
             <NavLink
               to='signup'
-              className={({isActive}) => isActive && styles.active}>
+              className={({isActive}) =>
+                isActive ? styles.active : undefined
+              }>
               <button className={`${styles.button} ${styles.signup}`}>
                 Sign Up
               </button>

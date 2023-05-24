@@ -33,7 +33,7 @@ function Signup() {
       confirmPassword: values.confirmPassword,
     }
     const response = await signup(data)
-    if (response.status == 201) {
+    if (response.status === 201) {
       const user = {
         _id: response.data.user._id,
         email: response.data.user.email,
@@ -48,6 +48,19 @@ function Signup() {
       console.log(response)
     }
   }
+
+  console.log(
+    errors.name ||
+      errors.email ||
+      errors.username ||
+      errors.password ||
+      errors.confirmPassword ||
+      values.name === '' ||
+      values.email === '' ||
+      values.username === '' ||
+      values.password === '' ||
+      values.confirmPassword === ''
+  )
 
   return (
     <div className={styles.signupWrapper}>
@@ -114,11 +127,11 @@ function Signup() {
           errors.username ||
           errors.password ||
           errors.confirmPassword ||
-          values.name ||
-          values.email ||
-          values.username ||
-          values.password ||
-          values.confirmPassword
+          !values.name ||
+          !values.email ||
+          !values.username ||
+          !values.password ||
+          !values.confirmPassword
         }>
         Sign Up
       </button>

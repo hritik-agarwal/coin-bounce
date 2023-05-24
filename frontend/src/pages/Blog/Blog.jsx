@@ -2,8 +2,10 @@ import {useState, useEffect} from 'react'
 import Loader from '../../components/Loader/Loader'
 import {getAllBlogs} from '../../api/internal'
 import styles from './Blog.module.css'
+import {useNavigate} from 'react-router-dom'
 
 function Blog() {
+  const navigate = useNavigate()
   const [blogs, setBlogs] = useState([])
 
   useEffect(() => {
@@ -24,7 +26,12 @@ function Blog() {
   return (
     <div className={styles.blogsWrapper}>
       {blogs.map(blog => (
-        <div key={blog._id} className={styles.blog}>
+        <div
+          key={blog._id}
+          className={styles.blog}
+          onClick={() => {
+            navigate(`/blogs/${blog._id}`)
+          }}>
           <h1>{blog.title}</h1>
           <img src={blog.imagePath} alt='' />
           <p>{blog.content.slice(0, 200)}...</p>

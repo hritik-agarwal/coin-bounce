@@ -1,15 +1,17 @@
-import styles from './SubmitBlog.module.css'
-import {submitBlogs} from '../../api/internal'
-import {useState} from 'react'
+import styles from './BlogUpdate.module.css'
+import {getBlogById, updateBlogs} from '../../api/internal'
+import {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import TextInput from '../../components/TextInput/TextInput'
+import Loader from '../../components/Loader/Loader'
 
-function SubmitBlog() {
+function BlogUpdate() {
   const [title, setTitle] = useState('')
   const [image, setImage] = useState('')
   const [content, setContent] = useState('')
 
+  const blogId = useParams().id
   const navigate = useNavigate()
 
   const author = useSelector(state => state.user._id)
@@ -24,21 +26,39 @@ function SubmitBlog() {
   }
 
   const handleSubmit = async () => {
-    const data = {
+    let data = {
       author,
       title,
       content,
-      image,
+      blogId,
     }
-    const response = await submitBlogs(data)
-    if (response.status === 201) {
+    if (!image.includes('http')) data = {...data, image}
+    const response = await updateBlogs(data)
+    if (response.status === 200) {
       navigate('/')
     }
   }
 
+  useEffect(() => {
+    const getBlogByIdCall = async () => {
+      const blogResponse = await getBlogById(blogId)
+      if (blogResponse.status === 200) {
+        const blog = blogResponse.data.blog
+        setTitle(blog.title)
+        setContent(blog.content)
+        setImage(blog.imagePath)
+      }
+    }
+    getBlogByIdCall()
+  }, [blogId])
+
+  if (title === '') {
+    return <Loader title='blog' />
+  }
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>Create a blog</div>
+      <div className={styles.header}>Update blog</div>
       <TextInput
         type='text'
         name='title'
@@ -64,15 +84,12 @@ function SubmitBlog() {
           accept='image/jpg, image/jpeg, image/png'
           onChange={getPhoto}
         />
-        {image !== '' && <img src={image} width={100} height={100} />}
+        <img alt='blog' src={image} width={100} height={100} />
       </div>
-      <button
-        className={styles.submit}
-        onClick={handleSubmit}
-        disabled={!title || !content || !image}>
-        Submit
+      <button className={styles.update} onClick={handleSubmit}>
+        Update
       </button>
     </div>
   )
 }
-export default SubmitBlog
+export default BlogUpdate
