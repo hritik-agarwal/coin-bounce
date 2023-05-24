@@ -116,7 +116,7 @@ const authController = {
       return next(error)
     }
     const userDTO = new UserDTO(user)
-    return res.status(201).json({user: userDTO, auth: true})
+    return res.status(200).json({user: userDTO, auth: true})
   },
 
   // logout user

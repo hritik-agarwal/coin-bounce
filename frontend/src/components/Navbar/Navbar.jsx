@@ -1,8 +1,18 @@
 import {NavLink} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
 import styles from './Navbar.module.css'
+import {signout} from '../../api/internal'
+import {resetUser} from '../../store/userSlice'
 
 function Navbar() {
-  const isAuthenticated = false
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector(state => state.user.auth)
+
+  const handleSignOut = async () => {
+    await signout()
+    dispatch(resetUser())
+  }
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -31,7 +41,9 @@ function Navbar() {
           <NavLink
             to='signout'
             className={({isActive}) => isActive && styles.active}>
-            <button className={`${styles.button} ${styles.signout}`}>
+            <button
+              onClick={handleSignOut}
+              className={`${styles.button} ${styles.signout}`}>
               Sign Out
             </button>
           </NavLink>

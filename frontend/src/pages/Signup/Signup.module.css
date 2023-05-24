@@ -1,4 +1,4 @@
-.loginWrapper {
+.signupWrapper {
   margin: 0 auto;
   width: 80vw;
   height: calc(100vh - 200px);
@@ -8,15 +8,15 @@
   justify-content: center;
 }
 
-.loginHeader {
+.signupHeader {
   font-size: 48px;
   font-weight: bold;
   width: inherit;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
-.loginButton {
+.signupButton {
   background-color: #3861fb;
   color: #fff;
   border: none;
@@ -31,11 +31,11 @@
   margin-top: 30px;
 }
 
-.loginButton:disabled {
+.signupButton:disabled {
   background-color: #99aefa;
 }
 
-.createAccount {
+.loginAccount {
   margin-top: 50px;
   margin-left: 10px;
   color: #16c784;
@@ -47,5 +47,5 @@
 }
 
 .errorMessage {
-  color: red;
+  
 }
