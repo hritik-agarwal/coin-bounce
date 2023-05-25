@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/coin-forum/static/css/main.0f1163f5.css",
+    "main.js": "/coin-forum/static/js/main.c7ef2ef9.js",
+    "index.html": "/coin-forum/index.html",
+    "main.0f1163f5.css.map": "/coin-forum/static/css/main.0f1163f5.css.map",
+    "main.c7ef2ef9.js.map": "/coin-forum/static/js/main.c7ef2ef9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f1163f5.css",
+    "static/js/main.c7ef2ef9.js"
+  ]
+}
