@@ -1,6 +1,6 @@
 .signupWrapper {
   margin: 0 auto;
-  width: 80vw;
+  max-width: 800px;
   height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;

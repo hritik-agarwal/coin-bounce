@@ -32,7 +32,7 @@ function useAutoLogin() {
       }
     }
     autoLoginApiCall()
-  }, [])
+  }, [dispatch])
 
   return loading
 }
