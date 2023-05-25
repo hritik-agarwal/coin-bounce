@@ -4,7 +4,6 @@ const {v2: cloudinary} = require('cloudinary')
 const Blog = require('../model/blog')
 const Comment = require('../model/comment')
 const {
-  // BACKEND_SERVER_PATH,
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET,
