@@ -1,6 +1,6 @@
 .wrapper {
   margin: 0 auto;
-  width: 80vw;
+  max-width: 800px;
   min-height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
 .content {
   padding: 18px 30px;
   margin: 15px;
-  width: 60%;
+  width: 100%;
   outline: none;
   border-radius: 10px;
   border: 1px solid #fff;

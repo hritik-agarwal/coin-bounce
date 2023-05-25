@@ -8,14 +8,23 @@ const {PORT} = require('./config/index')
 const dbConnect = require('./database/index')
 const errorHandler = require('./middleware/error')
 
-const corsOptions = {
-  credentials: true,
-  origin: ['http://localhost:3000'],
-}
-
 const app = express()
 
-app.use(cors(corsOptions))
+// const corsOptions = {
+//   credentials: true,
+//   origin: ['http://localhost:3000'],
+// }
+// app.use(cors(corsOptions))
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      return callback(null, true)
+    },
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+)
 app.use(cookieParser())
 app.use(express.json({limit: '50mb'}))
 app.use(router)

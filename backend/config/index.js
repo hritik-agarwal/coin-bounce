@@ -1,10 +1,13 @@
 const dotenv = require('dotenv').config()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 4000
 const MONGO_URI = process.env.MONGO_URI
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET
 const BACKEND_SERVER_PATH = process.env.BACKEND_SERVER_PATH
+const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME
+const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY
+const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET
 
 module.exports = {
   PORT,
@@ -12,4 +15,7 @@ module.exports = {
   ACCESS_TOKEN_SECRET,
   REFRESH_TOKEN_SECRET,
   BACKEND_SERVER_PATH,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
 }

@@ -1,12 +1,24 @@
 const fs = require('fs')
 const Joi = require('joi')
+const {v2: cloudinary} = require('cloudinary')
 const Blog = require('../model/blog')
 const Comment = require('../model/comment')
-const {BACKEND_SERVER_PATH} = require('../config')
+const {
+  // BACKEND_SERVER_PATH,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+} = require('../config')
 const BlogDTO = require('../dto/blog')
 const BlogDetailsDTO = require('../dto/blogDetails')
 
 const MONGO_ID_REGEX = /^[0-9a-fA-F]{24}$/
+
+cloudinary.config({
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET,
+})
 
 const blogController = {
   // Create a New Blog
@@ -22,11 +34,13 @@ const blogController = {
     if (error) return next(error)
     // IMAGE STORAGE
     const {title, content, image: base64Image, author} = req.body
-    const image = base64Image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '')
-    const buffer = Buffer.from(image, 'base64')
-    const imagePath = `storage/${Date.now()}-${author}.png`
+    // const image = base64Image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '')
+    // const buffer = Buffer.from(image, 'base64')
+    // const imagePath = `storage/${Date.now()}-${author}.png`
+    let response
     try {
-      await fs.writeFileSync(imagePath, buffer)
+      // await fs.writeFileSync(imagePath, buffer)
+      response = await cloudinary.uploader.upload(base64Image)
     } catch (error) {
       return next(error)
     }
@@ -37,7 +51,7 @@ const blogController = {
         title,
         content,
         author,
-        imagePath: `${BACKEND_SERVER_PATH}/${imagePath}`,
+        imagePath: response.url,
       })
       await blog.save()
     } catch (error) {
@@ -99,16 +113,17 @@ const blogController = {
       return next(error)
     }
     if (image) {
-      let previousImage = blog.imagePath.split('/').at(-1)
-      fs.unlinkSync(`storage/${previousImage}`)
-      const newImage = image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '')
-      const buffer = Buffer.from(newImage, 'base64')
-      const imagePath = `storage/${Date.now()}-${author}.png`
+      // let previousImage = blog.imagePath.split('/').at(-1)
+      // fs.unlinkSync(`storage/${previousImage}`)
+      // const newImage = image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '')
+      // const buffer = Buffer.from(newImage, 'base64')
+      // const imagePath = `storage/${Date.now()}-${author}.png`
       try {
-        await fs.writeFileSync(imagePath, buffer)
+        // await fs.writeFileSync(imagePath, buffer)
+        let response = await cloudinary.uploader.upload(photo)
         await Blog.updateOne(
           {_id: blogId},
-          {imagePath: `${BACKEND_SERVER_PATH}/${imagePath}`, title, content}
+          {imagePath: response.url, title, content}
         )
       } catch (error) {
         return next(error)

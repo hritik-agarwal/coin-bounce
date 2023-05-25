@@ -45,7 +45,6 @@ function SubmitBlog() {
         placeholder='title'
         value={title}
         onChange={e => setTitle(e.target.value)}
-        style={{width: '60%'}}
       />
       <textarea
         type='text'
